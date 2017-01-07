@@ -1,0 +1,72 @@
+<head>
+   <style>
+       .skeleton
+       {
+            margin: 0 auto;
+            width: 350px;
+       }
+       #skeleton-image
+       {
+           background-color: #c4c4c4;
+           height: 140px;
+       }
+       #skeleton-title
+       {
+           background-color: #757575;
+           height: 20px;
+       }
+       #skeleton-body
+       {
+           background-color: #757575;
+           height: 10px;
+       }
+       #skeleton-like
+       {
+           width: 162px;
+           height: 35px;
+       }
+       #skeleton-dislike
+       {
+           width: 92px;
+           height: 35px;
+       }
+       #container
+       {
+           margin: 0 auto;
+       }
+   </style> 
+</head>
+<body>
+     <br>
+     <div class="skeleton">
+        <div class="card">
+            <div class="card-block" id="skeleton-image"></div>
+                <div class="card-block">
+                    <div id="skeleton-title"></div>
+                    <p></p>
+                        <div id="skeleton-body"></div>
+                        <p></p>
+                        <button type='button' class="btn btn-primary" id="skeleton-like"></button>
+                        <button type='button' class="btn btn-danger" id="skeleton-dislike"></button>
+                        </div>
+                    </div>
+                </div>
+     <div id="container">
+     </div>
+</body>
+
+<script>
+    setTimeout(function(){
+        if ( $( ".skeleton" ).length ) 
+        {
+           location.reload();
+           
+        }
+    }, 2);
+    var post = <%= raw @jobs.to_json %>;
+    <% if user_signed_in? %>
+        var likes = <%= current_user.counter %>;
+    <%else %>
+        var likes = "Not signed in";
+    <% end %>
+</script>

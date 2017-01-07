@@ -1,0 +1,44 @@
+
+<br>
+<style>
+        #skeleton-image
+       {
+           background-color: #c4c4c4;
+           height: 140px;
+       }
+</style>
+<div id="main">
+   <%= form_for(@job) do |f| %>
+   <ul>
+      <% @job.errors.full_messages.each do |error| %>
+      <li><%= error %></li>
+      <% end %>
+   </ul>
+   <div id="main">
+      <div class="card" >
+         <div id="skeleton-image"></div>
+            <%= f.file_field :image, accept:'image/*' %>
+            <% if f.object.image? %>
+              <%= image_tag f.object.image.thumb.url %>
+              <%= f.label :remove_image %>
+              <%= f.check_box :remove_image %> 
+            <% end %>
+         <div class="card-block">
+            <p>Title</p>
+            <h4 class="card-title">
+               <%= f.text_field :title %>
+            </h4>
+            <p>Description </p>
+            <p class="card-text">
+               <%= f.text_area :body %>
+            </p>
+            <button type='button' class="btn btn-primary"> Yes, I'm Interested </button>
+            <button type='button' class="btn btn-danger"> No, Skip </button>
+         </div>
+      </div>
+   </div>
+   <p>
+      <%= f.submit "Post Job", :class => 'btn btn-success' %>
+   </p>
+   <% end %>
+</div>
