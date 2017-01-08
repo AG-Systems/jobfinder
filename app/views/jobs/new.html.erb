@@ -26,12 +26,13 @@
          <div class="card-block">
             <p>Title</p>
             <h4 class="card-title">
-               <%= f.text_field :title %>
+               <%= f.text_field :title, :required => true %>
             </h4>
             <p>Description </p>
             <p class="card-text">
-               <%= f.text_area :body %>
+               <%= f.text_area :body, :required => true %>
             </p>
+               <%= f.hidden_field :author, :value => current_user.email %>
             <button type='button' class="btn btn-primary"> Yes, I'm Interested </button>
             <button type='button' class="btn btn-danger"> No, Skip </button>
          </div>

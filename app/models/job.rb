@@ -1,4 +1,5 @@
 class Job < ActiveRecord::Base
+    belongs_to :user
     mount_uploader :image, ImageUploader
     validates_processing_of :image
     validate :image_size_validation

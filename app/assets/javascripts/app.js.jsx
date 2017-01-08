@@ -1,5 +1,10 @@
 $( document ).ready(function() {
-    
+    function send(company, body, email)
+    {
+        
+        $.post("/connections?connection[talent]=" + email + "&connection[company]=" + company + "&connection[body]=" + body)
+    }
+
 $(".skeleton").remove();
   var counter = 0;
   const divStyle = {
@@ -21,7 +26,11 @@ $(".skeleton").remove();
       }
     });
     var List = React.createClass({
-        like: function () {
+        like: function () 
+        {
+            interested = $("#company-title").text();
+            desc = $("#company-desc").text();
+            send(interested, desc, current_email);
             counter += 1;
             likes--;
             this.forceUpdate();
@@ -30,9 +39,8 @@ $(".skeleton").remove();
             //  $("#main").fadeIn(1000);
             
         },
-        dislike: function () {
-            console.log("dislike");
-            // Need to fix this
+        dislike: function () 
+        {
             counter += 1;
             this.forceUpdate();
         },
@@ -56,8 +64,8 @@ $(".skeleton").remove();
                       <div className="card" >
                         <img className="card-img-top" src={this.props.list[counter].image.url} height="150" width="350" alt="Card image cap" />
                         <div className="card-block">
-                          <h4 className="card-title">{ this.props.list[counter].title }</h4>
-                          <p className="card-text">{ this.props.list[counter].body }</p>
+                          <h4 className="card-title" id="company-title">{ this.props.list[counter].title }</h4>
+                          <p className="card-text" id="company-desc">{ this.props.list[counter].body }</p>
                           {userMessage}
                           <button type='button' onClick={this.dislike} className="btn btn-danger"> No, Skip </button>
                         </div>

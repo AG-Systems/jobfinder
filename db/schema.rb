@@ -11,7 +11,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170107231304) do
+ActiveRecord::Schema.define(version: 20170108101707) do
+
+# Could not dump table "connections" because of following NoMethodError
+#   undefined method `[]' for nil:NilClass
 
   create_table "follows", force: :cascade do |t|
     t.string   "follower_type"
@@ -30,6 +33,7 @@ ActiveRecord::Schema.define(version: 20170107231304) do
     t.string   "title"
     t.string   "body"
     t.string   "image"
+    t.string   "author"
   end
 
   create_table "likes", force: :cascade do |t|
@@ -71,6 +75,7 @@ ActiveRecord::Schema.define(version: 20170107231304) do
     t.string   "name"
     t.string   "resume"
     t.integer  "likes"
+    t.string   "author"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true

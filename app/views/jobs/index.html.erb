@@ -56,17 +56,34 @@
 </body>
 
 <script>
+    <% if user_signed_in? %>
+        var likes = <%= current_user.counter %>;
+        var current_email = "<%= current_user.email %>";
+    <%else %>
+        var likes = 2;
+    <% end %>
+    
     setTimeout(function(){
         if ( $( ".skeleton" ).length ) 
         {
            location.reload();
            
         }
-    }, 2);
+    }, 1000);
+    var interested;
+    var matches = <%= raw @connections.to_json %>;
     var post = <%= raw @jobs.to_json %>;
-    <% if user_signed_in? %>
-        var likes = <%= current_user.counter %>;
-    <%else %>
-        var likes = "Not signed in";
-    <% end %>
+    for(var i = 0; i < matches.length; i += 1)
+    {
+        for(var x = 0; x < post.length; x++)
+        {
+            if(current_email == matches[i].talent && matches[i].company == post[x].title)
+            {
+                console.log("hello");
+                post.splice(-x,x);
+            }
+        }
+    }
+    console.log(post);
+
 </script>

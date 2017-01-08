@@ -2,8 +2,13 @@ class JobsController < ApplicationController
     before_filter :authenticate_user!, :only => [:new]
     include JobsHelper
     def index
-         @jobs = Job.select("id, body, title, image").all
+         @connections = Connection.select("id, body, company, talent").all.reverse
+         @jobs = Job.select("id, body, title, image, author").all.reverse
+         # @jobs = @jobs - @connections | @connections - @jobs
+        # @jobs = Job.where.not(id: Connection.select(:id).distinct).select(:id)
     end
+    
+    
     def new
         @job = Job.new
     end
@@ -39,4 +44,7 @@ class JobsController < ApplicationController
       @job.downvote_by current_user
       redirect_to job_path
     end
+    
+  helper_method :all
+
 end

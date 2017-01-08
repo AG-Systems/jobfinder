@@ -1,0 +1,11 @@
+   <br>
+    <div id="main" >
+        <div class="card" >
+            <img class="card-img-top" height="150" width="350" alt="Card image cap" />
+                <div class="card-block">
+                    <h4 class="card-title" id="company-title"><%= @connection.company %></h4>
+                    <p className="card-text"><%= @connection.body %></p>
+                          <%= link_to 'Delete', @connection, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" %>
+                        </div>
+                      </div>
+                  </div>

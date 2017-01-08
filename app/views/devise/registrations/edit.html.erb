@@ -16,14 +16,12 @@
   </div>
   
   <div class="field">
+            Resume
             <%= f.file_field :resume %>
-            <% if f.object.resume? %>
-              <%= image_tag f.object.resume.thumb.url %>
               <%= f.label :remove_resume %>
               <%= f.check_box :remove_resume %> 
-            <% end %>
   </div>
-  
+  <br>
   <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
     <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
   <% end %>
