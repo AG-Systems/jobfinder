@@ -49,6 +49,7 @@
                         <button type='button' class="btn btn-primary" id="skeleton-like"></button>
                         <button type='button' class="btn btn-danger" id="skeleton-dislike"></button>
                         </div>
+                        <h3>Loading....</h3>
                     </div>
                 </div>
      <div id="container">
@@ -80,7 +81,7 @@
             if(current_email == matches[i].talent && matches[i].company == post[x].title)
             {
                 console.log("hello");
-                post.splice(-x,x);
+                post.splice(x,1);
             }
         }
     }

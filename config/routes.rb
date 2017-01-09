@@ -12,4 +12,5 @@ Rails.application.routes.draw do
   get 'new' => 'jobs#new'
   get '/ConnectionCreate', to: 'connection#create'
   get 'connections' => 'connection#index'
+  get 'profile' => 'jobs#profile'
 end
