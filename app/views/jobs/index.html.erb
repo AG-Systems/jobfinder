@@ -1,3 +1,4 @@
+<% if user_signed_in? %>
 <head>
    <style>
        .skeleton
@@ -57,12 +58,8 @@
 </body>
 
 <script>
-    <% if user_signed_in? %>
         var likes = <%= current_user.counter %>;
         var current_email = "<%= current_user.email %>";
-    <%else %>
-        var likes = 2;
-    <% end %>
     
     setTimeout(function(){
         if ( $( ".skeleton" ).length ) 
@@ -88,3 +85,16 @@
     console.log(post);
 
 </script>
+
+<% else %>
+<style>
+    body
+    {
+        background-color: #f4f4f4;
+    }
+</style>
+<body>
+    
+</body>
+
+<% end %>
