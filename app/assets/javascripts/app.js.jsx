@@ -33,16 +33,21 @@ $(".skeleton").remove();
             send(interested, desc, current_email);
             counter += 1;
             likes--;
+            $("#main").toggle("slide", { direction: "left" }, 1000);
             this.forceUpdate();
             
-             // $("#main").hide();
-            //  $("#main").fadeIn(1000);
+              $("#main").hide();
+              $("#main").fadeIn(1000);
             
         },
         dislike: function () 
         {
             counter += 1;
-            this.forceUpdate();
+              $("#main").toggle("slide", { direction: "right" }, 500);
+              $("#main").fadeOut();
+              $("#main").fadeIn(1000);
+                this.forceUpdate();    
+
         },
         render: function() {
           let userMessage;
